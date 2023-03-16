@@ -1,0 +1,7 @@
+# Coloco los archivos que no quiero que se suban al repo para que no sea tan pesado.
+.vscode
+.DS_Store
+node_modules/
+.env
+.cache/
+dist/

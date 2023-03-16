@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autitos</title>
+</head>
+<body>
+   
+    <div id="root">not rendered</div>
+    <!-- El DOM HTML me tira esta falla si no se renderiza mi App en React -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<style>
+    body {
+        color: peru;
+    }
+</style>
+    <script>
+        //ACÁ VA REACT//
+        const Cars = ({ marca, modelo, tipo }) => {
+            return React.createElement('div', {}, [
+                React.createElement('h2', {}, marca),
+                React.createElement('h3', {}, modelo),
+                React.createElement('h4', {}, tipo),
+            ]);
+        };
+        
+        
+        const Title = () => {
+            return React.createElement('h1', {id:'lalala'}, 'Autos Chetos'); //siempre retornamos un solo elemento. Nunca más de uno.
+        };
+
+        const Button = ({ logClick }) => {
+            return React.createElement ('button', { onClick: logClick }, 'Click!!');
+        };
+
+        const App = () => {
+
+            const logClick = () => {
+                console.log('Hey!!!');
+            };
+            //elemento HTML (string)/otro componente - Atributos de ese elemento como {} - Hijos que se pueda llegar a tener
+            return React.createElement('div', {},[
+            React.createElement(Title, {}, []), //Creo un elemento en mi componente App en base a mi componente Title
+            React.createElement(
+                Cars,
+                {
+                    marca: 'Ford',
+                    modelo: 'Fiesta',
+                    tipo: 'Sedan',
+                }, []),
+            React.createElement(
+                Cars,
+                {
+                    marca: 'Chevrolet',
+                    modelo: 'Cruze',
+                    tipo: 'Sedan',
+                }, []),
+            React.createElement(
+                Cars,
+                {
+                    marca: 'Fiat',
+                    modelo: 'Argo',
+                    tipo: 'Sedan',
+                }, []),
+                React.createElement(Button, {logClick})
+                ]);
+        };
+
+        ReactDOM.render (
+            React.createElement(App),
+            document.getElementById('root') //indicamos donde se renderiza el elemento
+        );
+    </script>    
+</body>
+</html>
